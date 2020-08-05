@@ -1,7 +1,6 @@
-package com.xiaoyuer.hn.admin;
+package com.xiaoyuer.hn.admin.dao;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  *   单独类使用，无需引入整个core-dao

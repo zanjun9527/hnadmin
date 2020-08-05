@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiaoyuer.hn.admin.dao.UserGroupMapper" >
+  <resultMap id="BaseResultMap" type="com.xiaoyuer.hn.admin.dmo.UserGroup" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="group_name" property="groupName" jdbcType="VARCHAR" />
+    <result column="group_summary" property="groupSummary" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="operator_id" property="operatorId" jdbcType="INTEGER" />
+    <result column="date_insert" property="dateInsert" jdbcType="TIMESTAMP" />
+    <result column="date_update" property="dateUpdate" jdbcType="TIMESTAMP" />
+    <result column="delete_mark" property="deleteMark" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, group_name, group_summary, user_id, operator_id, date_insert, date_update, delete_mark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_group
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_group
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xiaoyuer.hn.admin.dmo.UserGroup" >
+    insert into user_group (id, group_name, group_summary, 
+      user_id, operator_id, date_insert, 
+      date_update, delete_mark)
+    values (#{id,jdbcType=INTEGER}, #{groupName,jdbcType=VARCHAR}, #{groupSummary,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER}, #{dateInsert,jdbcType=TIMESTAMP}, 
+      #{dateUpdate,jdbcType=TIMESTAMP}, #{deleteMark,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xiaoyuer.hn.admin.dmo.UserGroup" >
+    insert into user_group
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="groupName != null" >
+        group_name,
+      </if>
+      <if test="groupSummary != null" >
+        group_summary,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="operatorId != null" >
+        operator_id,
+      </if>
+      <if test="dateInsert != null" >
+        date_insert,
+      </if>
+      <if test="dateUpdate != null" >
+        date_update,
+      </if>
+      <if test="deleteMark != null" >
+        delete_mark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupName != null" >
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupSummary != null" >
+        #{groupSummary,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="dateInsert != null" >
+        #{dateInsert,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dateUpdate != null" >
+        #{dateUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteMark != null" >
+        #{deleteMark,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiaoyuer.hn.admin.dmo.UserGroup" >
+    update user_group
+    <set >
+      <if test="groupName != null" >
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupSummary != null" >
+        group_summary = #{groupSummary,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="dateInsert != null" >
+        date_insert = #{dateInsert,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dateUpdate != null" >
+        date_update = #{dateUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteMark != null" >
+        delete_mark = #{deleteMark,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xiaoyuer.hn.admin.dmo.UserGroup" >
+    update user_group
+    set group_name = #{groupName,jdbcType=VARCHAR},
+      group_summary = #{groupSummary,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      operator_id = #{operatorId,jdbcType=INTEGER},
+      date_insert = #{dateInsert,jdbcType=TIMESTAMP},
+      date_update = #{dateUpdate,jdbcType=TIMESTAMP},
+      delete_mark = #{deleteMark,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+
+
+  <select id="testGetAll" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from user_group
+    where 1=1
+  </select>
+
+
+</mapper>
